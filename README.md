@@ -13,7 +13,7 @@ E-commerce product pages usually contain noisy and weakly structured data. Produ
 For downstream tasks such as product retrieval, clustering, trend mining, sales attribution, and recommendation explanation, we need reliable product visual factors such as:
 
 ```json
-["卡其色", "格纹元素", "双排扣", "腰带", "毛呢/羊绒感"]
+[ "米色" , "黑色皮革" , "双排扣", "腰带" , "翻领" , "长袖" ]
 ```
 
 Large vision-language models can extract such factors with strong accuracy, but running them over millions or billions of product images is computationally expensive. This project asks:
@@ -43,7 +43,7 @@ the model outputs a JSON-style list of visually salient product factors.
 **Output**
 
 ```json
-["卡其色", "格纹元素", "双排扣", "腰带", "毛呢/羊绒感"]
+["卡其色", "格纹元素" , "双排扣" , "腰带" , "毛呢/羊绒感"]
 ```
 
 The model focuses on factors that are visible or visually inferable from the image, rather than all claims appearing in the title.
@@ -163,6 +163,11 @@ L = L_factor_generation + λ · L_attention_map_distillation
 ```
 
 where `L_factor_generation` supervises textual factor generation, and `L_attention_map_distillation` transfers the teacher model's spatial grounding behavior.
+
+### 3. Accuracy and Efficiency
+
+Based on manual testing by volunteers and evaluation using the Normalized-F1 metric, this model is capable of achieving results close to those of Qwen3-VL on the task of fine-grained visual feature extraction for e-commerce products, while incurring lower inference costs (specifically, an inference time of 0.37 seconds per product on a single NVIDIA RTX 3090). It also generates supplementary features that are domain-reasonable for some samples.
+
 
 ---
 
