@@ -1,10 +1,7 @@
 # marqofactors_distillation
-# Product Factor Extractor
-
 A lightweight multimodal model for extracting visible product factors from noisy e-commerce image-title inputs.
 
 ## Model Architecture
-
 Frozen DINOv2 + Frozen Chinese RoBERTa
 → Stage1 Text Denoising Q-Former
 → Stage2 Image Grounding Q-Former
